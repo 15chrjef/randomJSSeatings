@@ -11,21 +11,38 @@ function makeGroups (){
 		groupVals.push(0)
 	}
 
+	function findHighLow(){
+		var lowest = Infinity;
+		var lowestI;
+		var highest = -Infinity;
+		var highestI;
+		for(var i = 0; i < kids.length; i++){
+			if(kids[i] < lowest){
+				lowest = kids[i]
+				lowestI = i
+			}
+			if(kids[i] > highest){
+				highest = kids[i]
+				highestI = i
+			}
+		}
+		return [lowestI, highestI]
+	}
 	var divisible = num % 2 === 0? true: false;
+
 	for(var i = 0, length = kids.length/2; i < length; i++){
 		var groupToPush = i % num
-		if(kids.length >= 2* num + 2 || divisible){
+		if(kids.length >= (num-groupToPush) * 2 || divisible){
 			var highLow = findHighLow()
 			var low = kids.shift()
 			var high = kids.pop()
 			groupsArr[groupToPush].push(low)
 			groupsArr[groupToPush].push(high)
 		} 
-		console.log('kids', kids)
 	}
 	if(kids.length > 0){
-		for(var j = i % num, length = kids.length; j <= length; j++){
-			var groupToPush = j % num
+		for(var j = 0, length = kids.length; j <= length; j++){
+			var groupToPush = (j + i) % num
 			var low = kids.shift()
 			groupsArr[groupToPush].push(low)
 		}
