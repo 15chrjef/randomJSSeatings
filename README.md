@@ -1,8 +1,5 @@
-ASSIGNMENT:
 Seating Chart Generator
 
-LINK:
-https://s3.amazonaws.com/interview-materials/Seating_Charts/Seating_Charts_assignment.tar
 
 DESCRIPTION:
 Teachers often want to make seating charts that assign their students to tables.
